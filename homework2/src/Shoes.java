@@ -1,21 +1,21 @@
 public class Shoes extends Product {
-   private Double  footNumber;
-    private String  type;
+   private double  footNumber;
+   private String base;
 
-    public Double getFootNumber() {
+    public double getFootNumber() {
         return footNumber;
     }
 
-    public void setFootNumber(Double footNumber) {
+    public void setFootNumber(double footNumber) {
         this.footNumber = footNumber;
     }
 
-    public String getType() {
-        return type;
+    public String getBase() {
+        return base;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBase(String base) {
+        this.base = base;
     }
 }
 
