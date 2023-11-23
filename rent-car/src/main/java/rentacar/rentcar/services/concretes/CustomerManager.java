@@ -12,7 +12,11 @@ import rentacar.rentcar.services.dtos.customer.requests.UpdateCustomerRequest;
 public class CustomerManager implements CustomerService {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+
+    public CustomerManager(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Override
     public void add(AddCustomerRequest request) {

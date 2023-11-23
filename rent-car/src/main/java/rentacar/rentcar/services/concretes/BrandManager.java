@@ -12,7 +12,7 @@ import rentacar.rentcar.services.abstracts.BrandService;
 public class BrandManager implements BrandService {
 
     @Autowired
-    private BrandRepository brandRepository;
+    private final BrandRepository brandRepository;
 
     public BrandManager(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;

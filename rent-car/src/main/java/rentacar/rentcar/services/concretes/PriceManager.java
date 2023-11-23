@@ -13,7 +13,7 @@ import rentacar.rentcar.services.dtos.price.requests.UpdatePriceRequest;
 public class PriceManager implements PriceService {
 
     @Autowired
-    private PriceRepository priceRepository;
+    private final PriceRepository priceRepository;
 
     public PriceManager(PriceRepository priceRepository) {
         this.priceRepository = priceRepository;

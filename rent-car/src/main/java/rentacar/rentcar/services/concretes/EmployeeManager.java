@@ -12,7 +12,11 @@ import rentacar.rentcar.services.dtos.employee.reqests.UpdateEmployeeRequest;
 public class EmployeeManager implements EmployeeService {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
+
+    public EmployeeManager(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     @Override
     public void add(AddEmployeeRequest request) {

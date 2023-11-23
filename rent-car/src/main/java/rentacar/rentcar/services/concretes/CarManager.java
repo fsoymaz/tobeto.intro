@@ -13,12 +13,12 @@ import rentacar.rentcar.services.dtos.car.requests.UpdateCarRequest;
 
 @Service
 public class CarManager implements CarService {
+
+    @Autowired
+    private final CarRepository carRepository;
     public CarManager(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
-
-    @Autowired
-    private CarRepository carRepository;
     @Override
     public void add(AddCarRequest request) {
         // CarCategory, Brands ve Employees nesnelerini oluşturup set etmeyi unutmayın

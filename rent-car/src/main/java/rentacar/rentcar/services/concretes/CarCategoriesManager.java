@@ -12,7 +12,11 @@ import rentacar.rentcar.services.dtos.carCategories.reqests.UpdateCarCategoriesR
 @Service
 public class CarCategoriesManager implements CarCategoriesService {
     @Autowired
-    CarsCategoryRepository carsCategoryRepository;
+    private final CarsCategoryRepository carsCategoryRepository;
+
+    public CarCategoriesManager(CarsCategoryRepository carsCategoryRepository) {
+        this.carsCategoryRepository = carsCategoryRepository;
+    }
 
 
     @Override
