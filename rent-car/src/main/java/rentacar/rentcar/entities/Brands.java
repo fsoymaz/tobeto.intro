@@ -22,6 +22,6 @@ public class Brands {
     private String model;
 
     @OneToMany(mappedBy = "brands")
-    @JsonIgnore
     private List<Cars> cars;
+
 }

@@ -45,4 +45,9 @@ public class EmployeeManager implements EmployeeService {
                 .orElseThrow(() -> new RuntimeException("silinecek employee id bulunamadı"));
         employeeRepository.delete(existing);
     }
+
+    @Override
+    public Employees getById(int employeeId) {
+        return employeeRepository.findById(employeeId).orElseThrow();
+    }
 }

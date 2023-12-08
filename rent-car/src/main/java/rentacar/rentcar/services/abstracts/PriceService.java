@@ -1,5 +1,6 @@
 package rentacar.rentcar.services.abstracts;
 
+import rentacar.rentcar.entities.Price;
 import rentacar.rentcar.services.dtos.price.requests.AddPriceRequest;
 import rentacar.rentcar.services.dtos.price.requests.UpdatePriceRequest;
 
@@ -8,4 +9,5 @@ public interface PriceService {
     void update(int id, UpdatePriceRequest request);
     void delete(int id);
 
+    Price getById(int priceId);
 }

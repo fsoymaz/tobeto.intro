@@ -1,9 +1,13 @@
 package rentacar.rentcar.api;
 
 import org.springframework.web.bind.annotation.*;
+import rentacar.rentcar.entities.Brands;
 import rentacar.rentcar.services.dtos.brand.requests.AddBrandRequest;
 import rentacar.rentcar.services.dtos.brand.requests.UpdateBrandRequest;
 import rentacar.rentcar.services.abstracts.BrandService;
+import rentacar.rentcar.services.dtos.brand.responses.GetListBrandResponse;
+
+import java.util.List;
 
 
 //Single responsibility
@@ -26,6 +30,18 @@ public class BrandController {
     {
         //manager a yönlendir
         brandService.add(request);
+    }
+
+    @GetMapping
+    public List<Brands> getByName(@RequestParam String name)
+    {
+        return brandService.getByNameStartingWith(name);
+    }
+
+    @GetMapping("dto")
+    public List<GetListBrandResponse> getByNameDto(@RequestParam String name)
+    {
+        return brandService.getByNAmeDto(name);
     }
     @PutMapping("/{brandId}")
     public void update(@PathVariable int brandId ,@RequestBody UpdateBrandRequest request)

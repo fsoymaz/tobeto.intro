@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import rentacar.rentcar.entities.Customers;
 
 public interface CustomerRepository extends JpaRepository<Customers, Integer> {
-
+    boolean existsByEmail(String email);
 }

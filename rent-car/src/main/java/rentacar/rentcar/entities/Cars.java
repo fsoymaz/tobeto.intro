@@ -17,22 +17,19 @@ public class Cars {
     private String plateNumber;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "category_id")
     private CarCategories carCategory;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "brand_id")
     private Brands brands;
 
+
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "employee_id")
     private Employees employees;
 
     @OneToOne(mappedBy = "cars")
-    @JsonIgnore
     private Rentals rentals;
 }
 

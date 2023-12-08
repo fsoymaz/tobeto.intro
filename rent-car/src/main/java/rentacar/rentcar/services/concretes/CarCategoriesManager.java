@@ -6,6 +6,7 @@ import rentacar.rentcar.dataaccess.CarsCategoryRepository;
 import rentacar.rentcar.entities.CarCategories;
 import rentacar.rentcar.entities.Price;
 import rentacar.rentcar.services.abstracts.CarCategoriesService;
+import rentacar.rentcar.services.abstracts.PriceService;
 import rentacar.rentcar.services.dtos.carCategories.reqests.AddCarCategoriesRequest;
 import rentacar.rentcar.services.dtos.carCategories.reqests.UpdateCarCategoriesRequest;
 
@@ -13,9 +14,11 @@ import rentacar.rentcar.services.dtos.carCategories.reqests.UpdateCarCategoriesR
 public class CarCategoriesManager implements CarCategoriesService {
     @Autowired
     private final CarsCategoryRepository carsCategoryRepository;
+    private final PriceService priceService;
 
-    public CarCategoriesManager(CarsCategoryRepository carsCategoryRepository) {
+    public CarCategoriesManager(CarsCategoryRepository carsCategoryRepository, PriceService priceService) {
         this.carsCategoryRepository = carsCategoryRepository;
+        this.priceService = priceService;
     }
 
 
@@ -27,8 +30,7 @@ public class CarCategoriesManager implements CarCategoriesService {
 
         CarCategories carCategories = new CarCategories();
         carCategories.setCategoryName(request.getName());
-        Price price = new Price();
-        price.setPriceId(request.getPriceId());
+        Price price = priceService.getById(request.getPriceId());
         carCategories.setPrice(price);
         carsCategoryRepository.save(carCategories);
     }
@@ -37,8 +39,7 @@ public class CarCategoriesManager implements CarCategoriesService {
     public void update(int id, UpdateCarCategoriesRequest request) {
         CarCategories existingCategory = carsCategoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("güncellenecek bir category id si bulunamadı"));
-        Price price = new Price();
-        price.setPriceId(request.getPriceId());
+        Price price = priceService.getById(request.getPriceId());
         existingCategory.setPrice(price);
         carsCategoryRepository.save(existingCategory);
     }
@@ -49,5 +50,10 @@ public class CarCategoriesManager implements CarCategoriesService {
                 .orElseThrow(()-> new RuntimeException("silinecek bir category id si bulunamadı"));
         carsCategoryRepository.delete(exitingCategory);
 
+    }
+
+    @Override
+    public CarCategories getById(int categoryId) {
+        return carsCategoryRepository.findById(categoryId).orElseThrow();
     }
 }

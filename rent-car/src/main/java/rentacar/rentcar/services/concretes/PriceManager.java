@@ -45,4 +45,9 @@ public class PriceManager implements PriceService {
         // Markayı sil
         priceRepository.delete(existingPrice);
     }
+
+    @Override
+    public Price getById(int priceId) {
+        return priceRepository.findById(priceId).orElseThrow();
+    }
 }

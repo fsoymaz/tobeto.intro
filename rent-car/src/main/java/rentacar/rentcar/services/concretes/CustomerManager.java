@@ -20,7 +20,7 @@ public class CustomerManager implements CustomerService {
 
     @Override
     public void add(AddCustomerRequest request) {
-        if (!isEmailAlreadyExists(request.getEmail())) {
+        if (!customerRepository.existsByEmail(request.getEmail())) {
             Customers customers = new Customers();
             customers.setFirstName(request.getFirstName());
             customers.setLastName(request.getLastName());
@@ -33,9 +33,6 @@ public class CustomerManager implements CustomerService {
 
     }
 
-    private boolean isEmailAlreadyExists(String email) {
-        return false;
-    }
 
     @Override
     public void update(int id, UpdateCustomerRequest request) {

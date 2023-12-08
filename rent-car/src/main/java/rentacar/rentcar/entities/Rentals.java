@@ -16,17 +16,14 @@ public class Rentals {
     private int rentalId;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "customer_id")
     private Customers customers;
 
     @OneToOne
-    @JsonIgnore
     @JoinColumn(name = "car_id")
     private Cars cars;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "employee_id")
     private Employees employees;
 
