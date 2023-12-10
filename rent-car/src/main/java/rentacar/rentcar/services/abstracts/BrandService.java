@@ -16,4 +16,6 @@ public interface BrandService {
     List<GetListBrandResponse> getByNAmeDto(String brandName);
 
     Brands getById(int brandId);
+
+    List<GetListBrandResponse> findByNameQuery(String name);
 }

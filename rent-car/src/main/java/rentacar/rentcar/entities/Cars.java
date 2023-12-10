@@ -25,10 +25,6 @@ public class Cars {
     private Brands brands;
 
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private Employees employees;
-
     @OneToOne(mappedBy = "cars")
     private Rentals rentals;
 }

@@ -39,14 +39,12 @@ public class CarManager implements CarService {
         }
 
         Brands brand = brandService.getById(request.getBrandId());
-        Employees employee = employeeService.getById(request.getEmployeeId());
         CarCategories carCategory = carCategoriesService.getById(request.getCategoryId());
 
 
         Cars cars = new Cars();
         cars.setPlateNumber(request.getPlateNumber());
         cars.setBrands(brand);
-        cars.setEmployees(employee);
         cars.setCarCategory(carCategory);
 
         carRepository.save(cars);
@@ -56,9 +54,6 @@ public class CarManager implements CarService {
     public void update(int id, UpdateCarRequest request) {
         Cars existingCar = carRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("güncellenecek bir araba id si bulunamadı"));
-        Employees employee = employeeService.getById(request.getEmployeeId());
-        employee.setEmployeeId(request.getEmployeeId());
-        existingCar.setEmployees(employee);
         carRepository.save(existingCar);;
     }
 

@@ -43,6 +43,11 @@ public class BrandController {
     {
         return brandService.getByNAmeDto(name);
     }
+    @GetMapping("query")
+    public List<GetListBrandResponse> findbyName(String name)
+    {
+        return brandService.findByNameQuery(name);
+    }
     @PutMapping("/{brandId}")
     public void update(@PathVariable int brandId ,@RequestBody UpdateBrandRequest request)
     {

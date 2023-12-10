@@ -14,6 +14,4 @@ public class AddCarRequest {
     private int categoryId;
     @Positive
     private int brandId;
-    @Positive
-    private int employeeId;
 }

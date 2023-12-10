@@ -7,6 +7,10 @@ import rentacar.rentcar.services.dtos.price.requests.AddPriceRequest;
 import rentacar.rentcar.entities.Price;
 import rentacar.rentcar.services.abstracts.PriceService;
 import rentacar.rentcar.services.dtos.price.requests.UpdatePriceRequest;
+import rentacar.rentcar.services.dtos.price.responses.GetListPriceResponse;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 
 @Service
@@ -49,5 +53,15 @@ public class PriceManager implements PriceService {
     @Override
     public Price getById(int priceId) {
         return priceRepository.findById(priceId).orElseThrow();
+    }
+
+    @Override
+    public List<GetListPriceResponse> getAll() {
+        return priceRepository.getAll();
+    }
+
+    @Override
+    public List<GetListPriceResponse> getByDailyPrice(BigDecimal dailyPrice) {
+        return priceRepository.findByPriceDailyRate(dailyPrice);
     }
 }

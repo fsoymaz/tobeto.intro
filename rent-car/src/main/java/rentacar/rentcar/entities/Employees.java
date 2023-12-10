@@ -30,9 +30,6 @@ public class Employees {
     @Column(name = "position")
     private String position;
 
-    @OneToMany(mappedBy = "employees")
-    private List<Cars> cars;
-
     //mappedBy employees class ı
     @OneToMany(mappedBy = "employees")
     private List<Rentals> rentals;

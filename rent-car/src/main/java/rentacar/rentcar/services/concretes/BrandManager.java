@@ -84,7 +84,9 @@ public class BrandManager implements BrandService {
     public Brands getById(int brandId) {
         return brandRepository.findById(brandId).orElseThrow();
     }
+
+    @Override
+    public List<GetListBrandResponse> findByNameQuery(String name) {
+        return brandRepository.findByBrandName(name);
+    }
 }
-
-
-//lambda Expression & stream api
