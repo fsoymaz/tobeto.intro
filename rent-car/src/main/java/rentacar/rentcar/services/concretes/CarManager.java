@@ -52,6 +52,8 @@ public class CarManager implements CarService {
         if (brand == null) {
             throw new RuntimeException("Marka ID bulunamadı: " + request.getBrandId());
         }
+        existingCar.setPlateNumber(request.getPlateNumber());
+        existingCar.setDailyPrice(request.getDailyPrice());
 
         existingCar.setBrand(brand);
         carRepository.save(existingCar);

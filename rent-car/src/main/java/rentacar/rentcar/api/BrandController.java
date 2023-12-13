@@ -1,5 +1,6 @@
 package rentacar.rentcar.api;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import rentacar.rentcar.entities.Brand;
 import rentacar.rentcar.services.dtos.brand.requests.AddBrandRequest;
@@ -26,7 +27,7 @@ public class BrandController {
     }
 
     @PostMapping
-    public void add(@RequestBody AddBrandRequest request)
+    public void add(@RequestBody @Valid AddBrandRequest request)
     {
         //manager a yönlendir
         brandService.add(request);
@@ -50,7 +51,7 @@ public class BrandController {
     }
 
     @PutMapping("/{brandId}")
-    public void update(@PathVariable int brandId ,@RequestBody UpdateBrandRequest request)
+    public void update(@PathVariable int brandId ,@RequestBody @Valid UpdateBrandRequest request)
     {
         brandService.update(brandId ,request);
     }

@@ -1,5 +1,6 @@
 package rentacar.rentcar.api;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import rentacar.rentcar.services.abstracts.CustomerService;
 import rentacar.rentcar.services.dtos.customer.requests.AddCustomerRequest;
@@ -25,12 +26,12 @@ public class CustomerController {
 
 
     @PostMapping
-    public void add(@RequestBody AddCustomerRequest request)
+    public void add(@RequestBody @Valid AddCustomerRequest request)
     {
         customerService.add(request);
     }
     @PutMapping("/{customerId}")
-    public void update(@PathVariable int customerId, @RequestBody UpdateCustomerRequest request)
+    public void update(@PathVariable int customerId, @RequestBody @Valid UpdateCustomerRequest request)
     {
         customerService.update(customerId ,request);
     }

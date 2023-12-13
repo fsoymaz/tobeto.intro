@@ -1,4 +1,5 @@
 package rentacar.rentcar.api;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import rentacar.rentcar.services.abstracts.RentalService;
 import rentacar.rentcar.services.dtos.rental.request.AddRentalRequest;
@@ -23,7 +24,7 @@ public class RentalController {
     }
 
     @PostMapping
-    public void add(@RequestBody AddRentalRequest request)
+    public void add(@RequestBody @Valid AddRentalRequest request)
     {
         rentalService.add(request);
     }

@@ -38,12 +38,18 @@ public class RentalManager implements RentalService {
 
     @Override
     public void update(int id, UpdateRentalRequest request) {
-
+        Rental existingRental = rentalRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("bu id ile güncellenecek bir araç yok"));
+        existingRental.setRentStartDate(request.getRentStartDate());
+        existingRental.setRentEndDate(request.getRentEndDate());
+        rentalRepository.save(existingRental);
     }
 
     @Override
     public void delete(int id) {
-
+        Rental existingRental = rentalRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("bu id ile silinecek bir kiralanma bulunamadı"));
+        rentalRepository.delete(existingRental);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class CarController {
     }
 
     @PutMapping("/{carId}")
-    public void update(@PathVariable int carId, @RequestBody UpdateCarRequest request)
+    public void update(@PathVariable int carId, @RequestBody @Valid UpdateCarRequest request)
     {
         carService.update(carId ,request);
     }

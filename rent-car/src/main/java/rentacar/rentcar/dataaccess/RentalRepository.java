@@ -14,7 +14,7 @@ public interface RentalRepository extends JpaRepository<Rental, Integer> {
             "new rentacar.rentcar.services.dtos.car.responses.GetListCarResponse(c.id, c.plateNumber, " +
             "new rentacar.rentcar.services.dtos.brand.responses.GetListBrandResponse(b.id, b.brandName, b.model), c.dailyPrice), " +
             "new rentacar.rentcar.services.dtos.employee.responses.GetListEmployeeResponse(em.employeeId, em.firstName, em.lastName, em.email, em.phone, em.position), " +
-            "new rentacar.rentcar.services.dtos.customer.re-sponses.GetListCustomerResponse(cs.customerId, cs.firstName, cs.lastName, cs.email, cs.phone), " +
+            "new rentacar.rentcar.services.dtos.customer.responses.GetListCustomerResponse(cs.customerId, cs.firstName, cs.lastName, cs.email, cs.phone), " +
             "r.rentStartDate, r.rentEndDate) " +
             "FROM Rental r " +
             "INNER JOIN r.cars c " +  // Updated reference to 'cars' instead of 'car'

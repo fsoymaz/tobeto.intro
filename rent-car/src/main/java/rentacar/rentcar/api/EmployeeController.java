@@ -1,5 +1,6 @@
 package rentacar.rentcar.api;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import rentacar.rentcar.services.abstracts.EmployeeService;
 import rentacar.rentcar.services.dtos.employee.reqests.AddEmployeeRequest;
@@ -25,13 +26,13 @@ public class EmployeeController {
 
 
     @PostMapping
-    public void add(@RequestBody AddEmployeeRequest request)
+    public void add(@RequestBody @Valid AddEmployeeRequest request)
     {
         employeeService.add(request);
     }
 
     @PutMapping("/{employeeId}")
-    public void update(@PathVariable int priceId ,@RequestBody UpdateEmployeeRequest request) {
+    public void update(@PathVariable int priceId ,@RequestBody @Valid UpdateEmployeeRequest request) {
         // update işlemleri
         employeeService.update(priceId, request);
     }
