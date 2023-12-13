@@ -5,11 +5,10 @@ import org.springframework.stereotype.Service;
 import rentacar.rentcar.dataaccess.BrandRepository;
 import rentacar.rentcar.services.dtos.brand.requests.AddBrandRequest;
 import rentacar.rentcar.services.dtos.brand.requests.UpdateBrandRequest;
-import rentacar.rentcar.entities.Brands;
+import rentacar.rentcar.entities.Brand;
 import rentacar.rentcar.services.abstracts.BrandService;
 import rentacar.rentcar.services.dtos.brand.responses.GetListBrandResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,17 +25,17 @@ public class BrandManager implements BrandService {
     public void add(AddBrandRequest request) {
         if (request.getBrandName().length() < 3)
             throw new RuntimeException("Marka ismi 3 haneden küçük olamaz");
-        Brands brands = new Brands();
-        brands.setBrandName(request.getBrandName());
-        brands.setModel(request.getModel());
-        brandRepository.save(brands);
+        Brand brand = new Brand();
+        brand.setBrandName(request.getBrandName());
+        brand.setModel(request.getModel());
+        brandRepository.save(brand);
     }
     @Override
 
     public void update(int brandId, UpdateBrandRequest request){
         // Güncellenecek markanın ID'sini al
         // Markanın veritabanında var olup olmadığını kontrol et
-        Brands existingBrand = brandRepository.findById(brandId)
+        Brand existingBrand = brandRepository.findById(brandId)
                 .orElseThrow(() -> new RuntimeException("Güncellenecek marka bulunamadı. ID: " + brandId));
 
         // Yeni bilgilerle mevcut markayı güncelle
@@ -52,7 +51,7 @@ public class BrandManager implements BrandService {
         // Silinecek markanın ID'sini al
 
         // Markanın veritabanında var olup olmadığını kontrol et
-        Brands existingBrand = brandRepository.findById(brandId)
+        Brand existingBrand = brandRepository.findById(brandId)
                 .orElseThrow(() -> new RuntimeException("Silinecek marka bulunamadı. ID: " + brandId));
 
         // Markayı sil
@@ -60,7 +59,7 @@ public class BrandManager implements BrandService {
     }
 
     @Override
-    public List<Brands> getByNameStartingWith(String brandName) {
+    public List<Brand> getByNameStartingWith(String brandName) {
         return brandRepository.findByBrandNameStartingWith(brandName);
     }
 
@@ -77,11 +76,13 @@ public class BrandManager implements BrandService {
          */
         // TODO:1. repositoriden list<brand> i alıp service katmanınada mepleyerek dto türüne çevirmek
         // TODO:2. repository list<getlistbrandresponse> dönebilen yeni bir method oluşturmak
-        return brandRepository.findByBrandNameStartingWith(brandName).stream().map((brand) -> new GetListBrandResponse(brand.getBrandId(), brand.getBrandName())).toList();
+        return brandRepository.findByBrandNameStartingWith(brandName).stream()
+                .map(brand -> new GetListBrandResponse(brand.getBrandId(), brand.getBrandName()))
+                .toList();
     }
 
     @Override
-    public Brands getById(int brandId) {
+    public Brand getById(int brandId) {
         return brandRepository.findById(brandId).orElseThrow();
     }
 

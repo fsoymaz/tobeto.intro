@@ -9,6 +9,6 @@ import rentacar.rentcar.services.dtos.brand.responses.GetListBrandResponse;
 public class GetListCarResponse {
     private int id;
     private String plateNumber;
-
     private GetListBrandResponse brands;
+    private double dailyPrice;
 }

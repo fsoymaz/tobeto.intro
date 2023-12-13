@@ -1,5 +1,7 @@
+
 package rentacar.rentcar.services.abstracts;
 
+import rentacar.rentcar.entities.Car;
 import rentacar.rentcar.services.dtos.car.requests.AddCarRequest;
 import rentacar.rentcar.services.dtos.car.requests.UpdateCarRequest;
 import rentacar.rentcar.services.dtos.car.responses.GetListCarResponse;
@@ -14,4 +16,6 @@ public interface CarService {
     void delete(int id);
 
     List<GetListCarResponse> getAll();
+
+    Car getById(int id);
 }

@@ -10,7 +10,6 @@ import org.checkerframework.checker.units.qual.Length;
 public class AddCarRequest {
     @NotBlank
     private String plateNumber;
-    private int categoryId;
 
     @Positive
     private int brandId;

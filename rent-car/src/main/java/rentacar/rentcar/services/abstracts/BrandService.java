@@ -1,6 +1,6 @@
 package rentacar.rentcar.services.abstracts;
 
-import rentacar.rentcar.entities.Brands;
+import rentacar.rentcar.entities.Brand;
 import rentacar.rentcar.services.dtos.brand.requests.AddBrandRequest;
 import rentacar.rentcar.services.dtos.brand.requests.UpdateBrandRequest;
 import rentacar.rentcar.services.dtos.brand.responses.GetListBrandResponse;
@@ -12,10 +12,10 @@ public interface BrandService {
     void update(int id, UpdateBrandRequest request);
     void delete(int id);
 
-    List<Brands> getByNameStartingWith(String brandName);
+    List<Brand> getByNameStartingWith(String brandName);
     List<GetListBrandResponse> getByNAmeDto(String brandName);
 
-    Brands getById(int brandId);
+    Brand getById(int brandId);
 
     List<GetListBrandResponse> findByNameQuery(String name);
 }

@@ -5,6 +5,5 @@ import lombok.Data;
 
 @Data
 public class UpdateCarRequest {
-    private int categoryId;
     private int brandId;
 }

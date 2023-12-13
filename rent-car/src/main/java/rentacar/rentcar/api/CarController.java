@@ -1,3 +1,4 @@
+
 package rentacar.rentcar.api;
 
 import jakarta.validation.Valid;
@@ -17,6 +18,7 @@ public class CarController {
     public CarController(CarService carService) {
         this.carService = carService;
     }
+
 
     @GetMapping
     public List<GetListCarResponse> getAll(){
@@ -40,3 +42,5 @@ public class CarController {
     }
 
 }
+
+

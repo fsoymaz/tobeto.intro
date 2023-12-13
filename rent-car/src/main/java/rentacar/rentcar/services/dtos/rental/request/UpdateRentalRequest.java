@@ -2,10 +2,10 @@ package rentacar.rentcar.services.dtos.rental.request;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class UpdateRentalRequest {
-    private Date rentStartDate;
-    private Date rentEndDate;
+    private LocalDate rentStartDate;
+    private LocalDate rentEndDate;
 }
